@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "accountName": {
+      "value": "cdr-lab03-proj-resource"
+    },
+    "projectName": {
+      "value": "cdr-lab03-proj"
+    },
+    "location": {
+      "value": "swedencentral"
+    },
+    "projectDescription": {
+      "value": "Lab 03 Cognitive Services Project"
+    },
+    "projectDisplayName": {
+      "value": "Lab 03 Project"
+    },
+    "modelName": {
+      "value": "gpt-4o-mini"
+    },
+    "modelFormat": {
+      "value": "OpenAI"
+    },
+    "modelVersion": {
+      "value": "2024-07-18"
+    },
+    "modelCapacity": {
+      "value": 1
+    },
+    "modelSkuName": {
+      "value": "Standard"
+    }
+  }
+}
+
+    // "keyVaultName": {
+    //   "value": "cdr-foundry-kv"
+    // }
+
+
