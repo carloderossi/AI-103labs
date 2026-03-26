@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "azure-ai-projects>=2.0.1",
+    "azure-ai-textanalytics>=5.4.0",
     "openai>=2.29.0",
     "python-dotenv>=1.2.2",
 ]
