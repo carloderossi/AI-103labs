@@ -1,8 +1,6 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-
-# import namespaces
 from openai import OpenAI
 
 def main(): 
@@ -10,7 +8,7 @@ def main():
     os.system('cls' if os.name == 'nt' else 'clear')
 
     try:
-        # Get configuration settings
+        # Get configuration settings 
         env_path = Path(__file__).resolve().parents[1] / ".env"
         print(f"Gathering environmental variables from {env_path}")
         load_dotenv(dotenv_path=env_path)
