@@ -1,3 +1,6 @@
+# https://github.com/MicrosoftLearning/mslearn-ai-language/tree/main/Labfiles/01-analyze-text/Python/text-analysis
+# Solution: https://microsoftlearning.github.io/mslearn-ai-language/Instructions/Exercises/01-analyze-text.html#add-code-to-connect-to-your-azure-ai-language-resource
+
 from dotenv import load_dotenv
 import os
 from dotenv import load_dotenv
@@ -35,7 +38,16 @@ def main():
         # https://cdr-lab03-proj-resource.services.ai.azure.com/
         
         ai_client = TextAnalyticsClient(endpoint=endpoint, credential=credential)
-        ai_client.analyze_sentiment(documents=["Good Hotel and staff"])
+        text = "Guten Morgen and gente, boa tarde."
+        print(f"\nDetecting language for '{text}'")
+        result = ai_client.detect_language(documents=[text])
+        print('Language: {}'.format(result[0].primary_language.name))
+        scores = result[0].primary_language.confidence_score
+        print("\tPrimary Language Score: {:.2f}%".format(scores * 100))
+
+        print("All detected languages:")
+        for lang in result:
+            print("- {}: {:.2f}%".format(lang.primary_language.name, lang.primary_language.confidence_score * 100))
 
         # Analyze each text file in the reviews folder
         reviews_folder = Path(__file__).resolve().parents[0] / "reviews"
@@ -48,10 +60,17 @@ def main():
            # Get language
             detectedLanguage = ai_client.detect_language(documents=[text])[0]
             print('\nLanguage: {}'.format(detectedLanguage.primary_language.name))
+            scores = detectedLanguage.primary_language.confidence_score
+            print("\tPrimary Language Score: {:.2f}%".format(scores * 100))
 
             # Get sentiment
             sentimentAnalysis = ai_client.analyze_sentiment(documents=[text])[0]
             print("\nSentiment: {}".format(sentimentAnalysis.sentiment))
+            # Print confidence scores as percentages
+            scores = sentimentAnalysis.confidence_scores
+            print("\tPositive: {:.2f}%".format(scores.positive * 100))
+            print("\tNeutral: {:.2f}%".format(scores.neutral * 100))
+            print("\tNegative: {:.2f}%".format(scores.negative * 100))
 
             # Get key phrases
             phrases = ai_client.extract_key_phrases(documents=[text])[0].key_phrases

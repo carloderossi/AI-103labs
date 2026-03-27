@@ -1,7 +1,7 @@
 [project]
 name = "labs"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.1.0"
+description = "CDR AI-103 labs"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -10,3 +10,4 @@ dependencies = [
     "openai>=2.29.0",
     "python-dotenv>=1.2.2",
 ]
+
